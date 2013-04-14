@@ -3,10 +3,8 @@
 
 
 // Global variables
-$body-background-color: hsl(0, 0%, 94%);
-$add-color: hsla(120, 80%, 55%, .5);
-$important-heading-color: hsla(0, 90%, 55%, .8);
-$notes-heading-color: hsla(25, 90%, 55%, .8);
+$body-bg-color: hsl(0, 0%, 94%);
+$add-color: hsl(120, 70%, 75%);
 
 $break1: 850px;
 $break2: 640px;
@@ -65,7 +63,7 @@ $break3: 400px;
 
 // Tag selectors
 body {
-	background-color: $body-background-color;
+	background-color: $body-bg-color;
 	font: 16px/1.5 proxima-nova, sans-serif;
 	width: 100%;
 
@@ -97,11 +95,8 @@ input, [contenteditable] {
 
 // Class selectors
 .add-note {
-	/* border-color is faded slightly due to Firefox issue with overlaying
-		 colors of same opacity. Doing so 'merges' the color into a plain
-		 one, and doesn't reveal the underlying color. I filed a bug for this. */
-	border-bottom: .3em solid fade-out($add-color, .01);
-	color: fade-out(black, .3);
+	border-bottom: .3em solid $add-color;
+	color: lighten(black, 30%);
 	font-size: 2.5em;
 	height: 1.75em;
 	line-height: 1.6;
@@ -116,9 +111,14 @@ input, [contenteditable] {
 	> div {
 		@include position(none 0 none 1.5em);
 	}
+	> label {
+		background-color: $add-color;
+		border-bottom: .3em solid saturate(darken($add-color, 12%), 10%);
+		color: darken(desaturate($add-color, 45%), 52%);
+		z-index: 1;
+	}
 
 	> label, button {
-		background-color: $add-color;
 		display: inline-block;
 		height: 1.75em;
 		line-height: 1.8;
@@ -142,17 +142,19 @@ input, [contenteditable] {
 		&.visible {
 			opacity: 1;
 			pointer-events: auto;
+			z-index: 2;
 
 			+ label {
-				background-color: fade-in($add-color, .3);
-				color: transparent;
+				background-color: saturate(darken($add-color, 17%), 10%);
+				border-color: saturate(darken($add-color, 20%), 10%);
+				color: saturate(darken($add-color, 17%), 10%);
 			}
 		}
 	}
 }
 
 .new-note {
-	background-color: $body-background-color;
+	background-color: $body-bg-color;
 	display: block;
 	height: 1.45em;
 	line-height: 1;
@@ -204,14 +206,14 @@ input, [contenteditable] {
 }
 
 .notes {
+	$border-color: lighten(black, 75%);
+
 	font-size: 2.5em;
 	margin-top: 1.5em;
 
 	> header {
-		$border-color: fade-out(black, .8);
-
 		border-bottom: 1px solid $border-color;
-		color: fade-out(black, .25);
+		color: lighten(black, 25%);
 		font-size: .5em;
 		max-width: 36em;
 		margin-bottom: 1em;
@@ -228,13 +230,14 @@ input, [contenteditable] {
 		}
 
 		> button {
-			color: fade-out(black, .55);
+			color: lighten(black, 55%);
 			font-size: .75em;
 			margin-left: .25em;
 			padding: 0 .35em 0 .15em;
 			line-height: 1;
 			vertical-align: bottom;
 			overflow: visible;
+			transition: color .1s linear;
 
 			@extend %heading-with-icon;
 			&:before {
@@ -244,12 +247,12 @@ input, [contenteditable] {
 			}
 
 			&.active {
-				background-color: $body-background-color;
-				color: fade-out(black, .25);
+				background-color: $body-bg-color;
+				color: lighten(black, 25%);
 				position: relative;
 
 				&:after {
-					color: $body-background-color;
+					color: $body-bg-color;
 					content: "▾";
 					font-family: "SSStandard";
 					@include position(none none -1.6em 0);
@@ -273,7 +276,7 @@ input, [contenteditable] {
 		}
 
 		> header {
-			$color: fade-out(black, .5);
+			$color: lighten(black, 50%);
 
 			color: $color;
 			font-size: .5em;
@@ -319,7 +322,7 @@ input, [contenteditable] {
 }
 
 .no-todos {
-	color: fade-out(black, .65);
+	color: lighten(black, 65%);
 	font-size: .4em;
 	font-style: italic;
 	margin: 3em 1.5em 0 3.75em;
@@ -347,14 +350,14 @@ input, [contenteditable] {
 		hsl(6, 9%, 56%),
 		hsl(18, 38%, 66%);
 	$hover-desaturate: 25%;
-	$color: hsla(0, 0%, 14%, .9);
+	$color: hsl(0, 0%, 24%);
 
-	@function modify-odd-color($color, $alpha: .9, $darken: 3%, $desaturate: 5%) {
-		@return desaturate( darken( fade-out($color, 1-$alpha), $darken), $desaturate);
+	@function modify-odd-color($color, $darken: 3%, $desaturate: 5%) {
+		@return desaturate( darken( $color, $darken), $desaturate);
 	}
 
-	@function modify-even-color($color, $alpha: .9, $darken: 0%, $desaturate: 10%) {
-		@return desaturate( darken( fade-out($color, 1-$alpha), $darken), $desaturate);
+	@function modify-even-color($color, $lighten: 3%, $desaturate: 10%) {
+		@return desaturate( lighten( $color, $lighten), $desaturate);
 	}
 
 	background-clip: content-box;
@@ -464,7 +467,8 @@ input, [contenteditable] {
 	}
 
 	> div {
-		background: fade-out($body-background-color, .1);
+		background-color: $body-bg-color;
+		background-color: fade-out($body-bg-color, .1);
 		box-shadow: 0 0 5px fade-out(black, .8);
 		line-height: 1;
 		margin: .2em;
@@ -524,28 +528,32 @@ input, [contenteditable] {
 
 // Modernizr classes
 .touch {
-	.note {
-		.complete {
-			color: fade-out(black, .5);
-			opacity: 1;
-			left: 0;
+	.note .complete {
+		color: fade-out(black, .5);
+		opacity: 1;
+		left: 0;
 
-			&:disabled {
-				opacity: 0;
-			}
+		&:disabled {
+			opacity: 0;
 		}
 	}
 }
 
 .no-touch {
-	.note {
-		.complete {
+	.note .complete {
+		&:hover, &:focus {
+			background-color: saturate(darken($add-color, 17%), 10%);
+			color: white;
+			text-shadow: 0 0 5px fade-out(black, .8);
+		}
+	}
+}
 
-			&:hover, &:focus {
-				background-color: fade-in($add-color, .3);
-				color: white;
-				text-shadow: 0 0 5px fade-out(black, .8);
-			}
+.no-textshadow {
+	.notes > header > button.active {
+
+		&:after {
+			display: none;
 		}
 	}
 }
