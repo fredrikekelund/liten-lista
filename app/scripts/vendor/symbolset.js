@@ -37,7 +37,9 @@
 		};
 
 	if (!!browserMatches()) {
-		console.log("Running Symbolset script...");
+		if (console) {
+			console.log("Running Symbolset script...");
+		}
 
 		var ss_set = {
 			'notifications disabled':'\uD83D\uDD15',
