@@ -1,0 +1,157 @@
+<!doctype html>
+<!--[if lt IE 7]>		<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>			<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>			<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->	<html class="no-js"> <!--<![endif]-->
+
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Grejer att göra</title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width">
+
+		<!-- build:css styles/main.min.css -->
+		<link rel="stylesheet" href="styles/screen.css">
+		<!-- endbuild -->
+
+		<!-- build:js scripts/vendor/modernizr.min.js -->
+		<script src="components/modernizr/modernizr.js"></script>
+		<!-- endbuild -->
+		<!-- build:js scripts/vendor/knockout.min.js -->
+		<script src="components/knockout/build/output/knockout-latest.js"></script>
+		<!-- endbuild -->
+
+		<script type="text/javascript" src="//use.typekit.net/yke7bnn.js"></script>
+		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+	</head>
+
+	<body>
+
+		<div id="container">
+
+			<div class="add-note">
+				<div>
+					<input data-bind="value: inputValue, valueUpdate: 'afterkeydown', enterKey: add, css: {'has-content': inputValue().length }, randomPlaceholder: placeholderTexts" class="new-note" id="new-note" spellcheck="false" title="Lägg till en ny grej!" />
+				</div>
+
+				<button data-bind="click: add, css: {visible: inputValue().length }, attr: {disabled: inputValue().length == 0 }" class="ss-check" type="button">Lägg till den!</button>
+				<label class="ss-plus" for="new-note">Lägg till en ny grej</label>
+			</div>
+
+			<div class="notes">
+				<header>
+					<h1 data-bind="text: listName" class="ss-list"></h1>
+<!--
+					<input data-bind="value: listName, valueUpdate: 'afterkeydown'">
+ -->
+					<button data-bind="css: {active: showing() == 'active'}, click: showActive" class="ss-openbook">Aktiva</button>
+					<button data-bind="css: {active: showing() == 'completed'}, click: showCompleted" class="ss-book">Färdiga</button>
+				</header>
+
+				<ul id="important">
+					<header>
+						<h2 class="ss-crosshair" title="Viktigt p.g.a. det avslutande utropstecknet">Viktigt</h2>
+						<div class="ss-barchart"><!-- ko text: stats.completedImportant --><!-- /ko --> färdig<!-- ko ifnot: stats.completedImportant() === 1 -->a<!-- /ko --><!-- ko if: showing() == "completed" --> (genom tiderna)<!-- /ko --></div>
+						<!--ko if: showing() == "active" -->
+						<button class="ss-trash" data-bind="visible: completedImportantVisible, click: hideCompletedImportant">Göm färdiga</button>
+						<!-- /ko -->
+						<!--ko if: showing() == "completed" -->
+						<button class="ss-trash" data-bind="visible: completedImportantTodos().length > 0, click: clearCompletedImportant">Ta bort alla</button>
+						<!-- /ko -->
+					</header>
+
+					<!--ko if: showing() == "active" -->
+					<div data-bind="visible: importantTodos().length == 0" class="no-todos">Gör en notering viktig genom att bara avsluta den med "!"</div>
+
+					<!-- ko foreach: importantTodos -->
+					<li data-bind="css: {completed: completed}" class="note important">
+						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
+						<div>
+							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
+							<span data-bind="text: trimmedTitle"></span>
+						</div>
+					</li>
+					<!-- /ko -->
+					<!-- /ko -->
+
+					<!--ko if: showing() == "completed" -->
+					<div data-bind="visible: completedImportantTodos().length == 0" class="no-todos">Du har inga färdigställda viktiga grejer på lager. Prioritera mera!</div>
+
+					<!-- ko foreach: completedImportantTodos -->
+					<li class="note important completed-hidden">
+						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
+						<div>
+							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
+							<span data-bind="text: trimmedTitle"></span>
+						</div>
+					</li>
+					<!-- /ko -->
+					<!-- /ko -->
+				</ul>
+
+				<ul id="regular">
+					<header>
+						<h2 class="ss-box">Vanligt</h2>
+						<div class="ss-barchart"><!-- ko text: stats.completedRegular --><!-- /ko --> färdig<!-- ko ifnot: stats.completedRegular() === 1 -->a<!-- /ko --><!-- ko if: showing() == "completed" --> (genom tiderna)<!-- /ko --></div>
+						<!--ko if: showing() == "active" -->
+						<button class="ss-trash" data-bind="visible: completedRegularVisible, click: hideCompletedRegular">Göm färdiga</button>
+						<!-- /ko -->
+						<!--ko if: showing() == "completed" -->
+						<button class="ss-trash" data-bind="visible: completedRegularTodos().length > 0, click: clearCompletedRegular">Ta bort alla</button>
+						<!-- /ko -->
+					</header>
+
+					<!--ko if: showing() == "active" -->
+					<div data-bind="visible: regularTodos().length == 0" class="no-todos">Lägg till en grej genom att skriva i fältet längst upp och trycka på enter</div>
+
+					<!-- ko foreach: regularTodos -->
+					<li data-bind="css: {completed: completed}" class="note">
+						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
+						<div>
+							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
+							<span data-bind="text: title"></span>
+						</div>
+					</li>
+					<!-- /ko -->
+					<!-- /ko -->
+
+					<!--ko if: showing() == "completed" -->
+					<div data-bind="visible: completedRegularTodos().length == 0" class="no-todos">Du har inga färdigställda vanliga grejer på lager. Bra eller dåligt? Det vet bara du.</div>
+
+					<!-- ko foreach: completedRegularTodos -->
+					<li class="note completed-hidden">
+						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
+						<div>
+							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
+							<span data-bind="text: title"></span>
+						</div>
+					</li>
+					<!-- /ko -->
+					<!-- /ko -->
+				</ul>
+			</div>
+
+		</div>
+
+
+		<!--
+		<script>
+			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+			s.parentNode.insertBefore(g,s)}(document,'script'));
+		</script>
+		-->
+
+		<!-- build:js scripts/vendor/helpers.min.js -->
+		<script src="components/prefix-free/prefixfree.js"></script>
+		<script src="scripts/vendor/symbolset.js"></script>
+		<!-- endbuild -->
+
+		<!-- build:js scripts/main.min.js -->
+		<script src="scripts/main.js"></script>
+		<!-- endbuild -->
+	</body>
+
+</html>

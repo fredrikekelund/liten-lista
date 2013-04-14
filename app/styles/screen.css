@@ -1,0 +1,1453 @@
+@charset "UTF-8";
+/*	Main style file for 'Notes' side project.
+	Fredrik Ekelund, 2013. */
+/* line 40, screen.scss */
+.add-note > label:before, .add-note button:before, .note > .complete:before {
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+}
+
+@font-face {
+  font-family: "SSStandard";
+  src: url('fonts/ss-standard.eot');
+  src: url('fonts/ss-standard.eot?#iefix') format("embedded-opentype"), url('fonts/ss-standard.woff') format("woff"), url('fonts/ss-standard.ttf') format("truetype"), url('fonts/ss-standard.svg#SSStandard') format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 15, _ss-standard.scss */
+html:hover [class^="ss-"] {
+  -ms-zoom: 1;
+}
+
+/* line 21, _ss-standard.scss */
+.ss-icon, .ss-icon.ss-standard,
+[class^="ss-"]:before, [class*=" ss-"]:before,
+[class^="ss-"].ss-standard:before, [class*=" ss-"].ss-standard:before,
+[class^="ss-"].right:after, [class*=" ss-"].right:after,
+[class^="ss-"].ss-standard.right:after, [class*=" ss-"].ss-standard.right:after {
+  font-family: "SSStandard";
+  font-style: normal;
+  font-weight: normal;
+  text-decoration: none;
+  text-rendering: optimizeLegibility;
+  white-space: nowrap;
+  -moz-font-feature-settings: "liga=1";
+  -moz-font-feature-settings: "liga";
+  -ms-font-feature-settings: "liga" 1;
+  -o-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
+}
+
+/* line 38, _ss-standard.scss */
+[class^="ss-"].right:before,
+[class*=" ss-"].right:before {
+  display: none;
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-cursor:before, .ss-cursor.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-crosshair:before, .ss-crosshair.right:after {
+  content: "⌖";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-search:before, .ss-search.right:after {
+  content: "🔎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-zoomin:before, .ss-zoomin.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-zoomout:before, .ss-zoomout.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-view:before, .ss-view.right:after {
+  content: "👀";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-attach:before, .ss-attach.right:after {
+  content: "📎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-link:before, .ss-link.right:after {
+  content: "🔗";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-move:before, .ss-move.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-write:before, .ss-write.right:after {
+  content: "✎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-writingdisabled:before, .ss-writingdisabled.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-erase:before, .ss-erase.right:after {
+  content: "✐";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-compose:before, .ss-compose.right:after {
+  content: "📝";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-lock:before, .ss-lock.right:after {
+  content: "🔒";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-unlock:before, .ss-unlock.right:after {
+  content: "🔓";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-key:before, .ss-key.right:after {
+  content: "🔑";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-backspace:before, .ss-backspace.right:after {
+  content: "⌫";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-ban:before, .ss-ban.right:after {
+  content: "🚫";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-trash:before, .ss-trash.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-target:before, .ss-target.right:after {
+  content: "◎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-tag:before, .ss-tag.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-bookmark:before, .ss-bookmark.right:after {
+  content: "🔖";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-flag:before, .ss-flag.right:after {
+  content: "⚑";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-like:before, .ss-like.right:after {
+  content: "👍";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-dislike:before, .ss-dislike.right:after {
+  content: "👎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-heart:before, .ss-heart.right:after {
+  content: "♥";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-halfheart:before, .ss-halfheart.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-star:before, .ss-star.right:after {
+  content: "⋆";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-halfstar:before, .ss-halfstar.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-sample:before, .ss-sample.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-crop:before, .ss-crop.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-layers:before, .ss-layers.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-fill:before, .ss-fill.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-stroke:before, .ss-stroke.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-phone:before, .ss-phone.right:after {
+  content: "📞";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-phonedisabled:before, .ss-phonedisabled.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-rss:before, .ss-rss.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-facetime:before, .ss-facetime.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-reply:before, .ss-reply.right:after {
+  content: "↩";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-send:before, .ss-send.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-mail:before, .ss-mail.right:after {
+  content: "✉";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-inbox:before, .ss-inbox.right:after {
+  content: "📥";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-chat:before, .ss-chat.right:after {
+  content: "💬";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-ellipsischat:before, .ss-ellipsischat.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-ellipsis:before, .ss-ellipsis.right:after {
+  content: "…";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-user:before, .ss-user.right:after {
+  content: "👤";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-femaleuser:before, .ss-femaleuser.right:after {
+  content: "👧";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-users:before, .ss-users.right:after {
+  content: "👥";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-cart:before, .ss-cart.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-creditcard:before, .ss-creditcard.right:after {
+  content: "💳";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-dollarsign:before, .ss-dollarsign.right:after {
+  content: "💲";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-barchart:before, .ss-barchart.right:after {
+  content: "📊";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-piechart:before, .ss-piechart.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-box:before, .ss-box.right:after {
+  content: "📦";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-home:before, .ss-home.right:after {
+  content: "⌂";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-buildings:before, .ss-buildings.right:after {
+  content: "🏢";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-warehouse:before, .ss-warehouse.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-globe:before, .ss-globe.right:after {
+  content: "🌎";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-navigate:before, .ss-navigate.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-compass:before, .ss-compass.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-signpost:before, .ss-signpost.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-map:before, .ss-map.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-location:before, .ss-location.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-pin:before, .ss-pin.right:after {
+  content: "📍";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-database:before, .ss-database.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-hdd:before, .ss-hdd.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-music:before, .ss-music.right:after {
+  content: "♫";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-mic:before, .ss-mic.right:after {
+  content: "🎤";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-volume:before, .ss-volume.right:after {
+  content: "🔈";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-lowvolume:before, .ss-lowvolume.right:after {
+  content: "🔉";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-highvolume:before, .ss-highvolume.right:after {
+  content: "🔊";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-airplay:before, .ss-airplay.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-camera:before, .ss-camera.right:after {
+  content: "📷";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-picture:before, .ss-picture.right:after {
+  content: "🌄";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-video:before, .ss-video.right:after {
+  content: "📹";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-play:before, .ss-play.right:after {
+  content: "▶";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-pause:before, .ss-pause.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-stop:before, .ss-stop.right:after {
+  content: "■";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-record:before, .ss-record.right:after {
+  content: "●";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-rewind:before, .ss-rewind.right:after {
+  content: "⏪";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-fastforward:before, .ss-fastforward.right:after {
+  content: "⏩";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-skipback:before, .ss-skipback.right:after {
+  content: "⏮";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-skipforward:before, .ss-skipforward.right:after {
+  content: "⏭";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-eject:before, .ss-eject.right:after {
+  content: "⏏";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-repeat:before, .ss-repeat.right:after {
+  content: "🔁";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-replay:before, .ss-replay.right:after {
+  content: "↺";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-shuffle:before, .ss-shuffle.right:after {
+  content: "🔀";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-book:before, .ss-book.right:after {
+  content: "📕";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-openbook:before, .ss-openbook.right:after {
+  content: "📖";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-notebook:before, .ss-notebook.right:after {
+  content: "📓";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-newspaper:before, .ss-newspaper.right:after {
+  content: "📰";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-grid:before, .ss-grid.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-rows:before, .ss-rows.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-columns:before, .ss-columns.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-thumbnails:before, .ss-thumbnails.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-filter:before, .ss-filter.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-desktop:before, .ss-desktop.right:after {
+  content: "💻";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-laptop:before, .ss-laptop.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-tablet:before, .ss-tablet.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-cell:before, .ss-cell.right:after {
+  content: "📱";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-battery:before, .ss-battery.right:after {
+  content: "🔋";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-highbattery:before, .ss-highbattery.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-mediumbattery:before, .ss-mediumbattery.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-lowbattery:before, .ss-lowbattery.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-emptybattery:before, .ss-emptybattery.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-lightbulb:before, .ss-lightbulb.right:after {
+  content: "💡";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-downloadcloud:before, .ss-downloadcloud.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-download:before, .ss-download.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-uploadcloud:before, .ss-uploadcloud.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-upload:before, .ss-upload.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-fork:before, .ss-fork.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-merge:before, .ss-merge.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-transfer:before, .ss-transfer.right:after {
+  content: "⇆";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-refresh:before, .ss-refresh.right:after {
+  content: "↻";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-sync:before, .ss-sync.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-loading:before, .ss-loading.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-wifi:before, .ss-wifi.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-connection:before, .ss-connection.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-file:before, .ss-file.right:after {
+  content: "📄";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-folder:before, .ss-folder.right:after {
+  content: "📁";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-quote:before, .ss-quote.right:after {
+  content: "“";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-text:before, .ss-text.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-font:before, .ss-font.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-print:before, .ss-print.right:after {
+  content: "⎙";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-fax:before, .ss-fax.right:after {
+  content: "📠";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-list:before, .ss-list.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-layout:before, .ss-layout.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-action:before, .ss-action.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-redirect:before, .ss-redirect.right:after {
+  content: "↪";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-expand:before, .ss-expand.right:after {
+  content: "⤢";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-contract:before, .ss-contract.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-help:before, .ss-help.right:after {
+  content: "❓";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-info:before, .ss-info.right:after {
+  content: "ℹ";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-alert:before, .ss-alert.right:after {
+  content: "⚠";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-caution:before, .ss-caution.right:after {
+  content: "⛔";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-logout:before, .ss-logout.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-plus:before, .ss-plus.right:after {
+  content: "+";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-hyphen:before, .ss-hyphen.right:after {
+  content: "-";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-check:before, .ss-check.right:after {
+  content: "✓";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-delete:before, .ss-delete.right:after {
+  content: "␡";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-settings:before, .ss-settings.right:after {
+  content: "⚙";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-dashboard:before, .ss-dashboard.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-notifications:before, .ss-notifications.right:after {
+  content: "🔔";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-notificationsdisabled:before, .ss-notificationsdisabled.right:after {
+  content: "🔕";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-clock:before, .ss-clock.right:after {
+  content: "⏲";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-stopwatch:before, .ss-stopwatch.right:after {
+  content: "⏱";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-calendar:before, .ss-calendar.right:after {
+  content: "📅";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-addcalendar:before, .ss-addcalendar.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-removecalendar:before, .ss-removecalendar.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-checkcalendar:before, .ss-checkcalendar.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-deletecalendar:before, .ss-deletecalendar.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-briefcase:before, .ss-briefcase.right:after {
+  content: "💼";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-cloud:before, .ss-cloud.right:after {
+  content: "☁";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-droplet:before, .ss-droplet.right:after {
+  content: "💧";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-flask:before, .ss-flask.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-up:before, .ss-up.right:after {
+  content: "⬆";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-upright:before, .ss-upright.right:after {
+  content: "⬈";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-right:before, .ss-right.right:after {
+  content: "➡";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-downright:before, .ss-downright.right:after {
+  content: "⬊";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-down:before, .ss-down.right:after {
+  content: "⬇";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-downleft:before, .ss-downleft.right:after {
+  content: "⬋";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-left:before, .ss-left.right:after {
+  content: "⬅";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-upleft:before, .ss-upleft.right:after {
+  content: "⬉";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-navigateup:before, .ss-navigateup.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-navigateright:before, .ss-navigateright.right:after {
+  content: "▻";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-navigatedown:before, .ss-navigatedown.right:after {
+  content: "";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-navigateleft:before, .ss-navigateleft.right:after {
+  content: "◅";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-directup:before, .ss-directup.right:after {
+  content: "▴";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-directright:before, .ss-directright.right:after {
+  content: "▹";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-dropdown:before, .ss-dropdown.right:after {
+  content: "▾";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-directleft:before, .ss-directleft.right:after {
+  content: "◃";
+}
+
+/* line 40, _ss-standard.scss */
+.ss-retweet:before, .ss-retweet.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-volumelow:before, .ss-volumelow.right:after {
+  content: "🔉";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-volumehigh:before, .ss-volumehigh.right:after {
+  content: "🔊";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-batteryhigh:before, .ss-batteryhigh.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-batterymedium:before, .ss-batterymedium.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-batterylow:before, .ss-batterylow.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-batteryempty:before, .ss-batteryempty.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-clouddownload:before, .ss-clouddownload.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-cloudupload:before, .ss-cloudupload.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-calendaradd:before, .ss-calendaradd.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-calendarremove:before, .ss-calendarremove.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-calendarcheck:before, .ss-calendarcheck.right:after {
+  content: "";
+}
+
+/* line 43, _ss-standard.scss */
+.ss-calendardelete:before, .ss-calendardelete.right:after {
+  content: "";
+}
+
+/* line 58, screen.scss */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+  color: inherit;
+  font: inherit;
+}
+
+/* line 67, screen.scss */
+body {
+  background-color: #f0f0f0;
+  font: 16px/1.5 proxima-nova, sans-serif;
+  width: 100%;
+}
+@media (max-width: 640px) {
+  /* line 67, screen.scss */
+  body {
+    font-size: 12px;
+  }
+}
+@media (max-width: 400px) {
+  /* line 67, screen.scss */
+  body {
+    font-size: 10px;
+  }
+}
+
+/* line 81, screen.scss */
+button {
+  background: none;
+  cursor: pointer;
+}
+
+/* line 87, screen.scss */
+input, [contenteditable] {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 0;
+  border-radius: 0;
+  outline: 0;
+  text-transform: inherit;
+}
+
+/* line 99, screen.scss */
+.add-note {
+  /* border-color is faded slightly due to Firefox issue with overlaying
+  	 colors of same opacity. Doing so 'merges' the color into a plain
+  	 one, and doesn't reveal the underlying color. I filed a bug for this. */
+  border-bottom: 0.3em solid rgba(48, 232, 48, 0.49);
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 2.5em;
+  height: 1.75em;
+  line-height: 1.6;
+  margin-top: 2.25em;
+  max-width: 18em;
+  position: relative;
+}
+@media (max-width: 400px) {
+  /* line 99, screen.scss */
+  .add-note {
+    margin-top: 1.8em;
+  }
+}
+/* line 116, screen.scss */
+.add-note > div {
+  position: absolute;
+  right: 0;
+  left: 1.5em;
+}
+/* line 120, screen.scss */
+.add-note > label, .add-note button {
+  background-color: rgba(48, 232, 48, 0.5);
+  display: inline-block;
+  height: 1.75em;
+  line-height: 1.8;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.1s linear;
+  white-space: nowrap;
+  width: 1.5em;
+}
+/* line 134, screen.scss */
+.add-note > button {
+  color: white;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+/* line 142, screen.scss */
+.add-note > button.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* line 146, screen.scss */
+.add-note > button.visible + label {
+  background-color: rgba(48, 232, 48, 0.8);
+  color: transparent;
+}
+
+/* line 154, screen.scss */
+.new-note {
+  background-color: #f0f0f0;
+  display: block;
+  height: 1.45em;
+  line-height: 1;
+  padding: 0.1em 0 0.1em 0.25em;
+  text-overflow: ellipsis;
+  text-transform: lowercase;
+  transition: background-color 0.15s linear;
+  width: 100%;
+}
+/* line 165, screen.scss */
+.new-note::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  padding-top: .1em;
+  transition: color 0.15s linear;
+}
+/* line 168, screen.scss */
+.new-note::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.7);
+  padding-top: .1em;
+  transition: color 0.15s linear;
+}
+/* line 171, screen.scss */
+.new-note .placeholder {
+  color: rgba(0, 0, 0, 0.7);
+}
+/* line 175, screen.scss */
+.new-note:focus {
+  background-color: white;
+}
+/* line 178, screen.scss */
+.new-note:focus::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+/* line 183, screen.scss */
+.new-note:focus::-moz-input-placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+/* line 188, screen.scss */
+.new-note.has-content {
+  background-color: white;
+}
+
+/* line 193, screen.scss */
+.notes > header > h1, .notes > header > button, .notes > ul > header > h2 {
+  margin-left: 1em;
+}
+/* line 196, screen.scss */
+.notes > header > h1:before, .notes > header > button:before, .notes > ul > header > h2:before {
+  display: inline-block;
+  margin-right: .25em;
+  padding-left: .25em;
+  position: relative;
+  top: 0.15em;
+  text-align: center;
+  width: 1.5em;
+}
+
+/* line 206, screen.scss */
+.notes {
+  font-size: 2.5em;
+  margin-top: 1.5em;
+}
+/* line 210, screen.scss */
+.notes > header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.75);
+  font-size: .5em;
+  max-width: 36em;
+  margin-bottom: 1em;
+  text-align: right;
+  *zoom: 1;
+}
+/* line 38, ../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.notes > header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 221, screen.scss */
+.notes > header > h1 {
+  float: left;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+/* line 230, screen.scss */
+.notes > header > button {
+  color: rgba(0, 0, 0, 0.45);
+  font-size: .75em;
+  margin-left: .25em;
+  padding: 0 0.35em 0 0.15em;
+  line-height: 1;
+  vertical-align: bottom;
+  overflow: visible;
+}
+/* line 240, screen.scss */
+.notes > header > button:before {
+  margin-right: 0;
+  padding-left: 0;
+  vertical-align: bottom;
+}
+/* line 246, screen.scss */
+.notes > header > button.active {
+  background-color: #f0f0f0;
+  color: rgba(0, 0, 0, 0.75);
+  position: relative;
+}
+/* line 251, screen.scss */
+.notes > header > button.active:after {
+  color: #f0f0f0;
+  content: "▾";
+  font-family: "SSStandard";
+  position: absolute;
+  bottom: -1.6em;
+  left: 0;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  width: 100%;
+}
+/* line 264, screen.scss */
+.notes > ul {
+  margin-bottom: 1.5em;
+  min-height: 3em;
+  max-width: 15em;
+  padding: 0 0.5em 1em 0;
+  *zoom: 1;
+}
+/* line 38, ../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.notes > ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+@media (max-width: 850px) {
+  /* line 264, screen.scss */
+  .notes > ul {
+    padding-right: 0;
+  }
+}
+/* line 275, screen.scss */
+.notes > ul > header {
+  color: rgba(0, 0, 0, 0.5);
+  font-size: .5em;
+  *zoom: 1;
+}
+/* line 38, ../../../../../../var/lib/gems/1.9.1/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+.notes > ul > header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+/* line 282, screen.scss */
+.notes > ul > header > h2 {
+  float: left;
+  display: inline-block;
+  line-height: 2;
+}
+/* line 290, screen.scss */
+.notes > ul > header > div, .notes > ul > header button {
+  border-bottom: 1px solid transparent;
+  float: right;
+  font-size: .5em;
+  height: 4.1em;
+  line-height: 4.7;
+  margin-left: 1.25em;
+  padding-left: .5em;
+}
+@media (max-width: 640px) {
+  /* line 290, screen.scss */
+  .notes > ul > header > div, .notes > ul > header button {
+    font-size: .75em;
+    line-height: 2.9;
+    height: 2em;
+  }
+}
+@media (max-width: 400px) {
+  /* line 290, screen.scss */
+  .notes > ul > header > div, .notes > ul > header button {
+    height: 2.5em;
+    line-height: 3.3;
+  }
+}
+/* line 309, screen.scss */
+.notes > ul > header > div:before, .notes > ul > header button:before {
+  margin-right: .75em;
+}
+/* line 314, screen.scss */
+.notes > ul > header > button:before {
+  margin-right: .4em;
+}
+
+/* line 321, screen.scss */
+.no-todos {
+  color: rgba(0, 0, 0, 0.35);
+  font-size: .4em;
+  font-style: italic;
+  margin: 3em 1.5em 0 3.75em;
+}
+
+/* line 328, screen.scss */
+.note:hover > .complete, .note > .complete:focus {
+  left: 0;
+  opacity: 1;
+  width: 1.5em;
+}
+
+/* line 334, screen.scss */
+.note {
+  background-clip: content-box;
+  clear: left;
+  color: rgba(36, 36, 36, 0.9);
+  float: left;
+  list-style: none;
+  margin-top: .5em;
+  max-width: 100%;
+  padding-left: 1.5em;
+  position: relative;
+  text-transform: lowercase;
+  transition-property: background-position, opacity;
+  transition-duration: .2s;
+  transition-timing-function: ease-in;
+}
+/* line 380, screen.scss */
+.note.completed {
+  background-position: 0 7em;
+  opacity: .8;
+}
+@media (max-width: 640px) {
+  /* line 380, screen.scss */
+  .note.completed {
+    background-position: 0 7.05em;
+  }
+}
+/* line 389, screen.scss */
+.note.completed > div > input {
+  display: none;
+}
+/* line 392, screen.scss */
+.note.completed > div > span {
+  background: linear-gradient(rgba(36, 36, 36, 0.9), rgba(36, 36, 36, 0.9)) center no-repeat;
+  background-size: 100% 7%;
+}
+/* line 399, screen.scss */
+.note.completed-hidden {
+  opacity: .8;
+}
+/* line 405, screen.scss */
+.note.important > div > span:after {
+  content: '!';
+  font-weight: bold;
+}
+/* line 411, screen.scss */
+.note:nth-child(odd) {
+  background-color: rgba(233, 37, 83, 0.9);
+}
+/* line 414, screen.scss */
+.note:nth-child(odd).important {
+  background-image: repeating-linear-gradient(-45deg, rgba(45, 102, 128, 0.9) 0, rgba(45, 102, 128, 0.9) 0.4em, rgba(90, 27, 70, 0.9) 0.4em, rgba(90, 27, 70, 0.9) 0.8em, rgba(129, 24, 96, 0.9) 0.8em, rgba(129, 24, 96, 0.9) 1.2em, rgba(233, 37, 83, 0.9) 1.2em, rgba(233, 37, 83, 0.9) 1.6em, rgba(182, 176, 47, 0.9) 1.6em, rgba(182, 176, 47, 0.9) 2em);
+}
+/* line 424, screen.scss */
+.note:nth-child(even) {
+  background-color: rgba(45, 155, 210, 0.9);
+}
+/* line 427, screen.scss */
+.note:nth-child(even).important {
+  background-image: repeating-linear-gradient(-45deg, rgba(73, 54, 56, 0.9) 0, rgba(73, 54, 56, 0.9) 0.4em, rgba(208, 53, 73, 0.9) 0.4em, rgba(208, 53, 73, 0.9) 0.8em, rgba(165, 118, 115, 0.9) 0.8em, rgba(165, 118, 115, 0.9) 1.2em, rgba(143, 143, 143, 0.9) 1.2em, rgba(143, 143, 143, 0.9) 1.6em, rgba(193, 159, 144, 0.9) 1.6em, rgba(193, 159, 144, 0.9) 2em);
+}
+/* line 438, screen.scss */
+.note > .complete {
+  height: 1.75em;
+  opacity: 0;
+  overflow: hidden;
+  padding: 0.2em 0.25em 0 0.25em;
+  position: absolute;
+  left: 0.2em;
+  text-shadow: 0 0 5px white;
+  transition: all 0.1s ease-out;
+  width: 1.3em;
+}
+/* line 454, screen.scss */
+.note > .complete:disabled {
+  cursor: default;
+  left: .2em;
+  opacity: 0;
+  width: 1.3em;
+}
+@media (max-width: 640px) {
+  /* line 438, screen.scss */
+  .note > .complete {
+    height: 1.8em;
+  }
+}
+/* line 466, screen.scss */
+.note > div {
+  background: rgba(240, 240, 240, 0.9);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  line-height: 1;
+  margin: .2em;
+  padding: 0.2em 0.35em 0.1em 0.25em;
+  position: relative;
+  transition: background-color 0.15s linear;
+}
+/* line 475, screen.scss */
+.note > div > input {
+  background: transparent;
+  color: transparent;
+  height: 100%;
+  padding: 0 0.25em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+/* line 483, screen.scss */
+.note > div > input:focus {
+  color: inherit;
+}
+/* line 486, screen.scss */
+.note > div > input:focus + span {
+  color: transparent;
+}
+/* line 492, screen.scss */
+.note > div > span {
+  background-size: 0% 7%;
+  display: block;
+  overflow: hidden;
+  padding-bottom: .05em;
+  text-overflow: ellipsis;
+  white-space: pre;
+}
+@media (max-width: 400px) {
+  /* line 492, screen.scss */
+  .note > div > span {
+    padding-bottom: .1em;
+  }
+}
+
+/* line 509, screen.scss */
+#container {
+  margin-left: 20%;
+  width: 60%;
+}
+@media (max-width: 640px) {
+  /* line 509, screen.scss */
+  #container {
+    margin-left: 10%;
+    width: 75%;
+  }
+}
+@media (max-width: 400px) {
+  /* line 509, screen.scss */
+  #container {
+    margin-left: 5%;
+    width: 90%;
+  }
+}
+
+/* line 528, screen.scss */
+.touch .note .complete {
+  color: rgba(0, 0, 0, 0.5);
+  opacity: 1;
+  left: 0;
+}
+/* line 533, screen.scss */
+.touch .note .complete:disabled {
+  opacity: 0;
+}
+
+/* line 544, screen.scss */
+.no-touch .note .complete:hover, .no-touch .note .complete:focus {
+  background-color: rgba(48, 232, 48, 0.8);
+  color: white;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
