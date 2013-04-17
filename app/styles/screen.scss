@@ -201,6 +201,7 @@ input, [contenteditable] {
 		padding-left: .25em;
 		@include position(.15em none none none, relative);
 		text-align: center;
+		text-shadow: 0 1px 0 white;
 		width: 1.5em;
 	}
 }
