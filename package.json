@@ -22,6 +22,7 @@
 		"grunt-regarde": "~0.1.1",
 		"grunt-mocha": "~0.2.2",
 		"grunt-open": "~0.2.0",
+		"grunt-csscss": "~0.2",
 		"matchdep": "~0.1.1"
 	},
 	"engines": {

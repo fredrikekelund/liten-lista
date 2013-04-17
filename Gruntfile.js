@@ -249,6 +249,14 @@ module.exports = function (grunt) {
 				}]
 			}
 		},
+		csscss: {
+			dist: {
+				options: {
+					compass: true
+				},
+				src: ['<%= yeoman.app %>/styles/screen.scss']
+			}
+		},
 		bower: {
 			all: {
 				rjsConfig: '<%= yeoman.app %>/scripts/main.js'
