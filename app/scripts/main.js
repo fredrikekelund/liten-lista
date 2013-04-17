@@ -127,7 +127,7 @@
 
 
 		// Regulate showing of active vs completed tasks
-		this.showing = ko.observable(savedTodos.showing || "active");
+		this.showing = ko.observable("active");
 		this.showCompleted = function() {
 			if (this.showing() === "active") {
 				this.showing("completed");
@@ -228,7 +228,6 @@
 						regularTodos: regularTodosSave,
 						completedImportantTodos: this.completedImportantTodos(),
 						completedRegularTodos: this.completedRegularTodos(),
-						showing: this.showing(),
 
 						stats: {
 							completedImportant: this.stats.completedImportant(),
