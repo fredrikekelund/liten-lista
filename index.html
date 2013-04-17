@@ -11,16 +11,10 @@
 		<meta name="description" content="">
 		<meta name="viewport" content="width=device-width">
 
-		<!-- build:css styles/main.min.css -->
-		<link rel="stylesheet" href="styles/screen.css">
-		<!-- endbuild -->
+		<link rel="stylesheet" href="styles/main.min.css">
 
-		<!-- build:js scripts/vendor/modernizr.min.js -->
-		<script src="scripts/vendor/modernizr.custom.js"></script>
-		<!-- endbuild -->
-		<!-- build:js scripts/vendor/knockout.min.js -->
-		<script src="components/knockout/build/output/knockout-latest.js"></script>
-		<!-- endbuild -->
+		<script src="scripts/vendor/modernizr.min.js"></script>
+		<script src="scripts/vendor/knockout.min.js"></script>
 
 		<script type="text/javascript" src="//use.typekit.net/yke7bnn.js"></script>
 		<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
@@ -32,7 +26,7 @@
 
 			<div class="add-note">
 				<div>
-					<input data-bind="value: inputValue, valueUpdate: 'afterkeydown', enterKey: add, css: {'has-content': inputValue().length }, randomPlaceholder: placeholderTexts" class="new-note" id="new-note" spellcheck="false" title="Lägg till en ny grej!" />
+					<input data-bind="value: inputValue, valueUpdate: 'afterkeydown', enterKey: add, css: {'has-content': inputValue().length }, randomPlaceholder: placeholderTexts" class="new-note" id="new-note" spellcheck="false" title="Lägg till en ny grej!">
 				</div>
 
 				<button data-bind="click: add, css: {visible: inputValue().length }, attr: {disabled: inputValue().length == 0 }" class="ss-check" type="button">Lägg till den!</button>
@@ -144,14 +138,9 @@
 			}
 		</script>
 
-		<!-- build:js scripts/vendor/helpers.min.js -->
-		<script src="components/prefix-free/prefixfree.js"></script>
-		<script src="scripts/vendor/symbolset.js"></script>
-		<!-- endbuild -->
+		<script src="scripts/vendor/helpers.min.js"></script>
 
-		<!-- build:js scripts/main.min.js -->
-		<script src="scripts/main.js"></script>
-		<!-- endbuild -->
+		<script src="scripts/main.min.js"></script>
 	</body>
 
 </html>
