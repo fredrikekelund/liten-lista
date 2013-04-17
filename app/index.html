@@ -135,14 +135,14 @@
 		</div>
 
 
-		<!--
 		<script>
-			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-			g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-			s.parentNode.insertBefore(g,s)}(document,'script'));
+			if (document.URL.indexOf("litenlista.se") > -1) {
+				var _gaq=[['_setAccount','UA-21812479-5'],['_trackPageview']];
+				(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+				g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+				s.parentNode.insertBefore(g,s)}(document,'script'));
+			}
 		</script>
-		-->
 
 		<!-- build:js scripts/vendor/helpers.min.js -->
 		<script src="components/prefix-free/prefixfree.js"></script>
