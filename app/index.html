@@ -15,8 +15,9 @@
 		<link rel="stylesheet" href="styles/screen.css">
 		<!-- endbuild -->
 
-		<!-- build:js scripts/vendor/modernizr.min.js -->
+		<!-- build:js scripts/vendor/helpers.min.js -->
 		<script src="scripts/vendor/modernizr.custom.js"></script>
+		<script src="components/prefix-free/prefixfree.js"></script>
 		<!-- endbuild -->
 		<!-- build:js scripts/vendor/knockout.min.js -->
 		<script src="components/knockout/build/output/knockout-latest.js"></script>
@@ -137,6 +138,7 @@
 
 		<script>
 			if (document.URL.indexOf("litenlista.se") > -1) {
+				if (console) console.log("Running GA code...");
 				var _gaq=[['_setAccount','UA-21812479-5'],['_trackPageview']];
 				(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 				g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
@@ -144,12 +146,8 @@
 			}
 		</script>
 
-		<!-- build:js scripts/vendor/helpers.min.js -->
-		<script src="components/prefix-free/prefixfree.js"></script>
-		<script src="scripts/vendor/symbolset.js"></script>
-		<!-- endbuild -->
-
 		<!-- build:js scripts/main.min.js -->
+		<script src="scripts/vendor/symbolset.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->
 	</body>

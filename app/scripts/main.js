@@ -240,11 +240,17 @@
 				throttle: 500
 			});
 		}
+
 	};
 
 
 	var savedTodos = (Modernizr.localstorage) ? ko.utils.parseJson(localStorage.getItem("todos")) || {} : {},
 		viewModel = new ViewModel(savedTodos);
 	ko.applyBindings(viewModel);
+
+	Modernizr.load({
+		test: "placeholder" in document.createElement("input"),
+		nope: "scripts/vendor/placeholders.js"
+	});
 
 } ());
