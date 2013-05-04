@@ -66,7 +66,7 @@
 					<div data-bind="visible: importantTodos().length == 0" class="no-todos">Gör en notering viktig genom att bara avsluta den med "!"</div>
 
 					<!-- ko foreach: importantTodos -->
-					<li data-bind="css: {completed: completed}" class="note important">
+					<li data-bind="title: date, css: {completed: completed}" class="note important">
 						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
 						<div>
 							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
@@ -80,7 +80,7 @@
 					<div data-bind="visible: completedImportantTodos().length == 0" class="no-todos">Du har inga färdigställda viktiga grejer på lager. Prioritera mera!</div>
 
 					<!-- ko foreach: completedImportantTodos -->
-					<li class="note important completed-hidden">
+					<li data-bind="title: date" class="note important completed-hidden">
 						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
@@ -107,7 +107,7 @@
 					<div data-bind="visible: regularTodos().length == 0" class="no-todos">Lägg till en grej genom att skriva i fältet längst upp och trycka på enter</div>
 
 					<!-- ko foreach: regularTodos -->
-					<li data-bind="css: {completed: completed}" class="note">
+					<li data-bind="title: date, css: {completed: completed}" class="note">
 						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
 						<div>
 							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
@@ -118,10 +118,10 @@
 					<!-- /ko -->
 
 					<!--ko if: showing() == "completed" -->
-					<div data-bind="visible: completedRegularTodos().length == 0" class="no-todos">Du har inga färdigställda vanliga grejer på lager. Bra eller dåligt? Det vet bara du.</div>
+					<div data-bind="visible: completedRegularTodos().length == 0" class="no-todos">Du har inga färdigställda vanliga grejer på lager. Bra eller dåligt? Ja och nej.</div>
 
 					<!-- ko foreach: completedRegularTodos -->
-					<li class="note completed-hidden">
+					<li data-bind="title: date" class="note completed-hidden">
 						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
@@ -148,6 +148,8 @@
 
 		<!-- build:js scripts/main.min.js -->
 		<script src="scripts/vendor/symbolset.js"></script>
+		<script src="components/moment/moment.js"></script>
+		<script src="components/moment/lang/sv.js"></script>
 		<script src="scripts/main.js"></script>
 		<!-- endbuild -->
 	</body>

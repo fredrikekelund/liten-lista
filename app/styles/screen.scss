@@ -216,10 +216,15 @@ input, [contenteditable] {
 		border-bottom: 1px solid $border-color;
 		color: lighten(black, 25%);
 		font-size: .5em;
+		line-height: 1.8;
 		max-width: 36em;
 		margin-bottom: 1em;
 		text-align: right;
 		@include pie-clearfix;
+
+		@media (max-width: $break3) {
+			line-height: 1.75;
+		}
 
 		> h1 {
 			float: left;
@@ -235,7 +240,6 @@ input, [contenteditable] {
 			font-size: .75em;
 			margin-left: .25em;
 			padding: 0 .35em 0 .15em;
-			line-height: 1;
 			vertical-align: bottom;
 			overflow: visible;
 			transition: color .1s linear;
@@ -245,6 +249,10 @@ input, [contenteditable] {
 				margin-right: 0;
 				padding-left: 0;
 				vertical-align: bottom;
+
+				@media (max-width: $break2) {
+					top: 0;
+				}
 			}
 
 			&.active {
@@ -330,7 +338,7 @@ input, [contenteditable] {
 }
 
 %complete-button-focus {
-	left: 0;
+	left: -1.5em;
 	opacity: 1;
 	width: 1.5em;
 }
@@ -368,7 +376,7 @@ input, [contenteditable] {
 	list-style: none;
 	margin-top: .5em;
 	max-width: 100%;
-	padding-left: 1.5em;
+	margin-left: 1.5em;
 	position: relative;
 	text-transform: lowercase;
 	transition: {
@@ -444,7 +452,7 @@ input, [contenteditable] {
 		opacity: 0;
 		overflow: hidden;
 		padding: .2em .25em 0 .25em;
-		@include position(none none none .2em);
+		@include position(none none none -1.3em);
 		text-shadow: 0 0 5px white;
 		transition: all .1s ease-out;
 		width: 1.3em;

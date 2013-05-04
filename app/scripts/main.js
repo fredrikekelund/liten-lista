@@ -24,23 +24,44 @@
 	};
 
 	ko.bindingHandlers.randomPlaceholder = {
-		init: function(element, valueAccessor) {
+		init: function(element, valueAccessor, allBindings, viewModel) {
 			var placeholders = valueAccessor(),
-				number = Math.floor(Math.random() * placeholders.length),
-				placeholder = "ex. " + placeholders[number];
+				placeholder = function() {
+					var number = Math.floor(Math.random() * placeholders.length);
 
-			element.setAttribute("placeholder", placeholder);
+					while (number === viewModel.placeholderNumber()) {
+						number = Math.floor(Math.random() * placeholders.length);
+					}
+
+					viewModel.placeholderNumber(number);
+					return ("ex. " + placeholders[number]);
+				};
+
+			element.setAttribute("placeholder", placeholder());
+		}
+	};
+
+	ko.bindingHandlers.title = {
+		init: function(element, valueAccessor) {
+			var getDate = function() {
+					return moment(valueAccessor()).fromNow();
+				}, setTitle = function() {
+					element.setAttribute("title", getDate());
+				},
+				interval = setInterval(setTitle, 5000);
+
+			setTitle();
 		}
 	};
 
 
 	// Todo constructor
-	var Todo = function(title, completed, viewModel) {
+	var Todo = function(title, completed, date, viewModel) {
 
 		// Variables
 		this.title = ko.observable(title);
 		this.completed = ko.observable(completed);
-		this.date = ko.observable(new Date());
+		this.date = date;
 
 		// Computeds
 		this.important = ko.computed(function() {
@@ -89,7 +110,7 @@
 			var returnArray = [];
 
 			for (var i = 0; i < array.length; i++) {
-				returnArray.push(new Todo(array[i].title, array[i].completed, this));
+				returnArray.push(new Todo(array[i].title, array[i].completed, array[i].date || new Date(), this));
 			}
 
 			return returnArray;
@@ -106,6 +127,8 @@
 		if (!savedTodos.stats) {
 			savedTodos.stats = {};
 		}
+		this.placeholderNumber = ko.observable((savedTodos.placeholderNumber !== undefined) ? savedTodos.placeholderNumber : 0);
+
 		// Storage object for stats on completed todos
 		this.stats = {
 			completedImportant: ko.observable(savedTodos.stats.completedImportant || 0),
@@ -145,13 +168,14 @@
 			var input = this.inputValue().trim(),
 				important = function() {
 					return input[input.length-1] === "!";
-				};
+				},
+				todo = new Todo(input, false, new Date(), this);
 
 			if (input) {
 				if (important() === false) {
-					this.regularTodos.push(new Todo(input, false, this));
+					this.regularTodos.push(todo);
 				} else if (important() === true) {
-					this.importantTodos.push(new Todo(input, false, this));
+					this.importantTodos.push(todo);
 				}
 
 				// Clear input element
@@ -224,6 +248,7 @@
 					}),
 
 					todosSave = {
+						placeholderNumber: this.placeholderNumber(),
 						importantTodos: importantTodosSave,
 						regularTodos: regularTodosSave,
 						completedImportantTodos: this.completedImportantTodos(),
@@ -246,6 +271,7 @@
 
 	var savedTodos = (Modernizr.localstorage) ? ko.utils.parseJson(localStorage.getItem("todos")) || {} : {},
 		viewModel = new ViewModel(savedTodos);
+
 	ko.applyBindings(viewModel);
 
 	Modernizr.load({
