@@ -13,7 +13,7 @@
 
 		<link rel="stylesheet" href="styles/main.min.css">
 
-		<script src="scripts/vendor/modernizr.min.js"></script>
+		<script src="scripts/vendor/helpers.min.js"></script>
 		<script src="scripts/vendor/knockout.min.js"></script>
 
 		<script type="text/javascript" src="//use.typekit.net/yke7bnn.js"></script>
@@ -59,7 +59,7 @@
 					<div data-bind="visible: importantTodos().length == 0" class="no-todos">Gör en notering viktig genom att bara avsluta den med "!"</div>
 
 					<!-- ko foreach: importantTodos -->
-					<li data-bind="css: {completed: completed}" class="note important">
+					<li data-bind="title: date, css: {completed: completed}" class="note important">
 						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
 						<div>
 							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
@@ -73,7 +73,7 @@
 					<div data-bind="visible: completedImportantTodos().length == 0" class="no-todos">Du har inga färdigställda viktiga grejer på lager. Prioritera mera!</div>
 
 					<!-- ko foreach: completedImportantTodos -->
-					<li class="note important completed-hidden">
+					<li data-bind="title: date" class="note important completed-hidden">
 						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
@@ -100,7 +100,7 @@
 					<div data-bind="visible: regularTodos().length == 0" class="no-todos">Lägg till en grej genom att skriva i fältet längst upp och trycka på enter</div>
 
 					<!-- ko foreach: regularTodos -->
-					<li data-bind="css: {completed: completed}" class="note">
+					<li data-bind="title: date, css: {completed: completed}" class="note">
 						<button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button>
 						<div>
 							<input data-bind="value: title, valueUpdate: 'afterkeydown'">
@@ -111,10 +111,10 @@
 					<!-- /ko -->
 
 					<!--ko if: showing() == "completed" -->
-					<div data-bind="visible: completedRegularTodos().length == 0" class="no-todos">Du har inga färdigställda vanliga grejer på lager. Bra eller dåligt? Det vet bara du.</div>
+					<div data-bind="visible: completedRegularTodos().length == 0" class="no-todos">Du har inga färdigställda vanliga grejer på lager. Bra eller dåligt? Ja och nej.</div>
 
 					<!-- ko foreach: completedRegularTodos -->
-					<li class="note completed-hidden">
+					<li data-bind="title: date" class="note completed-hidden">
 						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
@@ -131,14 +131,13 @@
 
 		<script>
 			if (document.URL.indexOf("litenlista.se") > -1) {
+				if (console) console.log("Running GA code...");
 				var _gaq=[['_setAccount','UA-21812479-5'],['_trackPageview']];
 				(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
 				g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
 				s.parentNode.insertBefore(g,s)}(document,'script'));
 			}
 		</script>
-
-		<script src="scripts/vendor/helpers.min.js"></script>
 
 		<script src="scripts/main.min.js"></script>
 	</body>
