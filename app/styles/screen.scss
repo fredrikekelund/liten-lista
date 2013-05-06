@@ -43,6 +43,17 @@ $break3: 400px;
 }
 
 
+//@keyframes
+@keyframes fade-out {
+	0%, 95% {
+		color: lighten(black, 50%);
+	}
+	100% {
+		color: transparent;
+	}
+}
+
+
 // @import directives
 @import "compass/reset/utilities";
 @import "compass/css3";
@@ -62,9 +73,18 @@ $break3: 400px;
 
 
 // Tag selectors
+a {
+
+	&:hover, &:focus {
+		color: lighten(black, 15%);
+	}
+}
+
 body {
 	background-color: $body-bg-color;
 	font: 16px/1.5 proxima-nova, sans-serif;
+	min-height: 100%;
+	position: absolute;
 	width: 100%;
 
 	@media (max-width: $break2) {
@@ -81,6 +101,52 @@ button {
 	cursor: pointer;
 }
 
+footer {
+	animation: fade-out 8s linear;
+	color: transparent;
+	font-size: .75em;
+	max-width: 37em;
+	@include position(none none 1em 4.5em);
+	transition: color .15s linear;
+	user-select: all;
+	width: 85%;
+
+	> header > h2 {
+		color: lighten(black, 60%);
+		cursor: pointer;
+		display: block;
+		font-size: 2em;
+		margin-top: -.65em;
+		@include position(50% none none -1.7em);
+		text-align: center;
+		text-shadow: 0 1px 0 white;
+		width: 1.5em;
+	}
+
+	&:hover, &:focus {
+		color: lighten(black, 50%);
+	}
+
+	&:focus {
+		outline: 0;
+
+		> header > h2 {
+			outline: auto;
+		}
+	}
+
+	@media (max-width: $break2) {
+		font-size: .8em;
+		line-height: 1.35;
+		@include position(none none 2em 3.5em);
+
+		> header > h2 {
+			font-size: 1.8em;
+			margin-top: -.7em;
+			@include position(50% none none -1.6em);
+		}
+	}
+}
 
 input, [contenteditable] {
 	-moz-appearance: none;
@@ -211,6 +277,7 @@ input, [contenteditable] {
 
 	font-size: 2.5em;
 	margin-top: 1.5em;
+	padding-bottom: 2em;
 
 	> header {
 		border-bottom: 1px solid $border-color;
@@ -223,7 +290,7 @@ input, [contenteditable] {
 		@include pie-clearfix;
 
 		@media (max-width: $break3) {
-			line-height: 1.75;
+			line-height: 1.65;
 		}
 
 		> h1 {
@@ -251,7 +318,7 @@ input, [contenteditable] {
 				vertical-align: bottom;
 
 				@media (max-width: $break2) {
-					top: 0;
+					top: .2em;
 				}
 			}
 
@@ -537,10 +604,15 @@ input, [contenteditable] {
 
 // Modernizr classes
 .touch {
+	footer {
+		animation: none;
+		color: lighten(black, 65%);
+	}
+
 	.note .complete {
 		color: fade-out(black, .5);
 		opacity: 1;
-		left: 0;
+		left: -1.5em;
 
 		&:disabled {
 			opacity: 0;

@@ -20,7 +20,8 @@
 	"smarttabs": true,
 	"globals": {
 		"Modernizr": true,
-		"ko": true
+		"ko": true,
+		"moment": true
 	},
 	"white": false
 }

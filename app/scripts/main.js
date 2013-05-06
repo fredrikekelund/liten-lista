@@ -48,7 +48,7 @@
 				}, setTitle = function() {
 					element.setAttribute("title", getDate());
 				},
-				interval = setInterval(setTitle, 5000);
+				interval = setInterval(setTitle, 60000);
 
 			setTitle();
 		}
