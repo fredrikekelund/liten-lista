@@ -45,7 +45,8 @@
 		init: function(element, valueAccessor) {
 			var getDate = function() {
 					return moment(valueAccessor()).fromNow();
-				}, setTitle = function() {
+				},
+				setTitle = function() {
 					element.setAttribute("title", getDate());
 				},
 				interval = setInterval(setTitle, 60000);

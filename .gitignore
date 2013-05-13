@@ -6,3 +6,4 @@ build
 build*
 gitignore
 app/styles/screen.css
+app/scripts/coffee/compiled

@@ -290,7 +290,7 @@ input, [contenteditable] {
 		@include pie-clearfix;
 
 		@media (max-width: $break3) {
-			line-height: 1.65;
+			line-height: 1.7;
 		}
 
 		> h1 {
@@ -319,6 +319,9 @@ input, [contenteditable] {
 
 				@media (max-width: $break2) {
 					top: .2em;
+				}
+				@media (max-width: $break3) {
+					top: 0;
 				}
 			}
 
@@ -448,7 +451,7 @@ input, [contenteditable] {
 	text-transform: lowercase;
 	transition: {
 		property: background-position, opacity;
-		duration: .2s;
+		duration: .4s, .2s;
 		timing-function: ease-in;
 	}
 
