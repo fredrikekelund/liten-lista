@@ -74,7 +74,7 @@
 
 					<!-- ko foreach: completedImportantTodos -->
 					<li data-bind="title: date" class="note important completed-hidden">
-						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
+						<button data-bind="click: $root.remove" class="ss-delete remove" title="Ta bort den här färdigställda grejen">Ta bort</button>
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
 							<span data-bind="text: trimmedTitle"></span>
@@ -115,7 +115,7 @@
 
 					<!-- ko foreach: completedRegularTodos -->
 					<li data-bind="title: date" class="note completed-hidden">
-						<!-- <button data-bind="click: $root.complete, attr: {disabled: completed}" class="ss-check complete" title="Färdigställ den här grejen">Färdigställ</button> -->
+						<button data-bind="click: $root.remove" class="ss-delete remove" title="Ta bort den här färdigställda grejen">Ta bort</button>
 						<div>
 							<!-- <input data-bind="value: title, valueUpdate: 'afterkeydown'"> -->
 							<span data-bind="text: title"></span>
@@ -129,9 +129,7 @@
 		</div>
 
 		<footer tabindex="-0">
-			<header>
-				<h2 class="ss-icon">Information</h2>
-			</header>
+			<h2 class="ss-icon">Information</h2>
 
 			Den här lilla appen är mest ett experiment. Alla grejer sparas, men bara i webbläsaren. Koden finns <a href="https://github.com/leopld/liten-lista">tillgänglig på Github</a>. Fredrik Ekelund står bakom.
 		</footer>
