@@ -147,6 +147,12 @@ ViewModel = (savedTodos) ->
 
 		@inputValue("")
 
+	@remove = (todo) ->
+		if (todo.important() == true)
+			viewModel.completedImportantTodos.remove(todo)
+		else
+			viewModel.completedRegularTodos.remove(todo)
+
 
 	@hideCompletedImportant = ->
 		@importantTodos.remove((todo) ->

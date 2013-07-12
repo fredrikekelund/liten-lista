@@ -111,7 +111,7 @@ footer {
 	user-select: all;
 	width: 85%;
 
-	> header > h2 {
+	> h2 {
 		color: lighten(black, 60%);
 		cursor: pointer;
 		display: block;
@@ -455,7 +455,7 @@ input, [contenteditable] {
 		timing-function: ease-in;
 	}
 
-	&:hover > .complete {
+	&:hover > .complete, &:hover > .remove {
 		@extend %complete-button-focus;
 	}
 
@@ -517,7 +517,7 @@ input, [contenteditable] {
 		}
 	}
 
-	> .complete {
+	> .complete, .remove {
 		height: 1.75em;
 		opacity: 0;
 		overflow: hidden;
@@ -529,10 +529,6 @@ input, [contenteditable] {
 
 		@extend %only-ss-icon;
 
-		&:focus {
-			@extend %complete-button-focus;
-		}
-
 		&:disabled {
 			cursor: default;
 			left: .2em;
@@ -542,6 +538,13 @@ input, [contenteditable] {
 
 		@media (max-width: $break2) {
 			height: 1.8em;
+		}
+	}
+
+	> .complete {
+
+		&:focus {
+			@extend %complete-button-focus;
 		}
 	}
 
@@ -612,7 +615,7 @@ input, [contenteditable] {
 		color: lighten(black, 65%);
 	}
 
-	.note .complete {
+	.note .complete, .note .remove {
 		color: fade-out(black, .5);
 		opacity: 1;
 		left: -1.5em;
@@ -624,11 +627,20 @@ input, [contenteditable] {
 }
 
 .no-touch {
+	.note .complete, .note .remove {
+		&:hover, &:focus {
+			color: white;
+			text-shadow: 0 0 5px fade-out(black, .8);
+		}
+	}
 	.note .complete {
 		&:hover, &:focus {
 			background-color: saturate(darken($add-color, 17%), 10%);
-			color: white;
-			text-shadow: 0 0 5px fade-out(black, .8);
+		}
+	}
+	.note .remove {
+		&:hover, &:focus {
+			background-color: red;
 		}
 	}
 }
