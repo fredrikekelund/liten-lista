@@ -37,7 +37,7 @@
 		};
 
 	if (!!browserMatches()) {
-		if (console) {
+		if (window.console) {
 			console.log("Running Symbolset script...");
 		}
 
