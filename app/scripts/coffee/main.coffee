@@ -238,5 +238,5 @@ ko.applyBindings(viewModel);
 
 Modernizr.load(
 	test: "placeholder" of document.createElement("input")
-	nope: "scripts/vendor/placeholders.js"
+	nope: "scripts/vendor/placeholders.min.js"
 )
